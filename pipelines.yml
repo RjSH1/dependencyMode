@@ -1,6 +1,6 @@
 resources:
   - name: dependencyModeImage
-    type: DockerImage
+    type: Image
     configuration:
       registry: aidan_docker
       imageName: amurphy/test
@@ -39,7 +39,7 @@ pipelines:
         waitOnParentComplete: true
         waitOnParentSuccess: true
     steps:  
-      - name: createImage
+      - name: pullImage
         type: Bash
         configuration:
           inputResources:
@@ -61,7 +61,7 @@ pipelines:
           onExecute:
             - write_output dependencyModePropertyBag runNumber=${run_number}
             
-  - name: dependencyModeChildPipeline1
+  - name: dependencyModeChildPipeline2
     configuration:
       chronological: true
     steps:  
