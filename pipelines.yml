@@ -4,7 +4,7 @@ resources:
     configuration:
       registry: aidan_docker
       imageName: amurphy/test
-      imageTag: 0
+      imageTag: "0"
   - name: dependencyModePropertyBag
     type: PropertyBag
     configuration:
