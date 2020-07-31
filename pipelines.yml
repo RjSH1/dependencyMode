@@ -1,0 +1,79 @@
+resources:
+  - name: dependencyModeImage
+    type: DockerImage
+    configuration:
+      registry: aidan_docker
+      imageName: amurphy/test
+      imageTag: 0
+  - name: dependencyModePropertyBag
+    type: PropertyBag
+    configuration:
+      runNumber: 0
+  - name: dependencyModeRepo
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/dependencyMode
+      branches:
+        include: ^{{gitBranch}}$
+
+pipelines:
+  - name: dependencyModeParentPipeline1
+    steps:  
+      - name: createImage
+        type: Bash
+        configuration:
+          inputResources:
+            - name: dependencyModeRepo
+          outputResources:
+            - name: dependencyModeImage
+        execution:
+          onExecute:
+            - cd ${res_dependencyModeRepo_path}
+            - docker build -t ${res_dependencyModeImage_imageName}:${run_number}
+            - write_output dependencyModeImage imageTag=${run_number}
+  - name: dependencyModeChildPipeline1
+    configuration:
+      dependencyMode:
+        waitOnParentComplete: true
+        waitOnParentSuccess: true
+    steps:  
+      - name: createImage
+        type: Bash
+        configuration:
+          inputResources:
+            - name: dependencyModeImage
+        execution:
+          onExecute:
+            - echo ${res_dependencyModeImage_imageName}:${res_dependencyModeImage_imageTag}
+  - name: dependencyModeParentPipeline2
+    configuration:
+      dependencyMode:
+        waitOnChildComplete: true
+    steps:  
+      - name: updateProperties
+        type: Bash
+        configuration:
+          outputResources:
+            - name: dependencyModePropertyBag
+        execution:
+          onExecute:
+            - write_output dependencyModePropertyBag runNumber=${run_number}
+            
+  - name: dependencyModeChildPipeline1
+    configuration:
+      chronological: true
+    steps:  
+      - name: echoProperty
+        type: Bash
+        configuration:
+          inputResources:
+            - name: dependencyModePropertyBag
+        execution:
+          onExecute:
+            - echo ${res_dependencyModePropertyBag_runNumber}
+            - sleep 5
+
+
+ 
+ 
