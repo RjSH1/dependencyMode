@@ -31,6 +31,7 @@ pipelines:
           onExecute:
             - cd ${res_dependencyModeRepo_path}
             - docker build -t ${res_dependencyModeImage_imageName}:${run_number}
+            - docker push ${res_dependencyModeImage_imageName}:${run_number}
             - write_output dependencyModeImage imageTag=${run_number}
   - name: dependencyModeChildPipeline1
     configuration:
