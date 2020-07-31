@@ -29,7 +29,7 @@ pipelines:
             - name: dependencyModeImage
         execution:
           onExecute:
-            - cd ${res_dependencyModeRepo_path}
+            - cd ${res_dependencyModeRepo_resourcePath}
             - docker build -t ${res_dependencyModeImage_imageName}:${run_number}
             - docker push ${res_dependencyModeImage_imageName}:${run_number}
             - write_output dependencyModeImage imageTag=${run_number}
