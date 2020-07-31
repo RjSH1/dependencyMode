@@ -1,2 +1,2 @@
 FROM scratch
-ADD pipelines.yml
+ADD pipelines.yml .
