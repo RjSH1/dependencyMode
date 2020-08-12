@@ -18,7 +18,7 @@ resources:
         include: ^{{gitBranch}}$
 
 pipelines:
-  - name: _waitOnParent1
+  - name: 0_waitOnParent1
     steps:  
       - name: createImage
         type: Bash
@@ -35,7 +35,7 @@ pipelines:
             - docker build -t ${res_dependencyModeImage_imageName}:${run_number} .
             - docker push ${res_dependencyModeImage_imageName}:${run_number}
             - write_output dependencyModeImage imageTag=${run_number}
-  - name: _waitOnParent2
+  - name: 0_waitOnParent2
     configuration:
       dependencyMode:
         waitOnParentComplete: true
@@ -49,7 +49,7 @@ pipelines:
         execution:
           onExecute:
             - echo ${res_dependencyModeImage_imageName}:${res_dependencyModeImage_imageTag}
-  - name: _waitOnChild1
+  - name: 0_waitOnChild1
     configuration:
       dependencyMode:
         waitOnChildComplete: true
@@ -63,7 +63,7 @@ pipelines:
           onExecute:
             - write_output dependencyModePropertyBag runNumber=${run_number}
             
-  - name: _waitOnChild2
+  - name: 0_waitOnChild2
     configuration:
       chronological: true
     steps:  
