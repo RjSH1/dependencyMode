@@ -81,11 +81,11 @@ pipelines:
         configuration:
           priority: 1000
           inputSteps:
-              - name: echoProperty
-          execution:
-            onExecute:
-              - echo "complete"
-              - sleep 5
+            - name: echoProperty
+        execution:
+          onExecute:
+            - echo "complete"
+            - sleep 5
 
 
  
