@@ -3,7 +3,7 @@ resources:
     type: Image
     configuration:
       registry: aidan_docker
-      imageName: amurphy/test
+      imageName: RjSH1/test
       imageTag: "0"
   - name: dependencyModePropertyBag
     type: PropertyBag
@@ -12,8 +12,8 @@ resources:
   - name: dependencyModeRepo
     type: GitRepo
     configuration:
-      gitProvider: aidan_github
-      path: a-murphy/dependencyMode
+      gitProvider: myGithub
+      path: RjSH1/dependencyMode
       branches:
         include: ^{{gitBranch}}$
 
@@ -85,7 +85,3 @@ pipelines:
         execution:
           onExecute:
             - echo "complete"
-
-
- 
- 
