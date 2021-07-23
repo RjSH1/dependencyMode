@@ -6,7 +6,7 @@ resources:
       #imageName: RjSH1/test
       registry: myArtifactory
       sourceRepository: su204-docker-staging-local
-      imageName: fullstackrj.jfrogdev.org/su204-docker-staging-local/app_docker_image
+      imageName: app_docker_image
       imageTag: "0"
   - name: dependencyModePropertyBag
     type: PropertyBag
