@@ -31,7 +31,8 @@ pipelines:
           outputResources:
             - name: dependencyModeImage
           integrations:
-            - name: aidan_docker
+            #- name: aidan_docker
+            - name: myArtifactory
         execution:
           onExecute:
             - cd ${res_dependencyModeRepo_resourcePath}
