@@ -2,8 +2,10 @@ resources:
   - name: dependencyModeImage
     type: Image
     configuration:
-      registry: aidan_docker
-      imageName: RjSH1/test
+      #registry: aidan_docker
+      #imageName: RjSH1/test
+      registry: myArtifactory
+      imageName: docker-local
       imageTag: "0"
   - name: dependencyModePropertyBag
     type: PropertyBag
