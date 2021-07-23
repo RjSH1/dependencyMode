@@ -5,7 +5,8 @@ resources:
       #registry: aidan_docker
       #imageName: RjSH1/test
       registry: myArtifactory
-      imageName: su204-docker-prod-local
+      sourceRepository: su204-docker-staging-local
+      imageName: app_docker_image
       imageTag: "0"
   - name: dependencyModePropertyBag
     type: PropertyBag
