@@ -2,7 +2,7 @@ resources:
   - name: dependencyModeImage
     type: Image
     configuration:
-      registry: acme-docker-staging-local
+      registry: dockerIntegration
       imageName: RjSH1/test
       imageTag: "0"
   - name: dependencyModePropertyBag
