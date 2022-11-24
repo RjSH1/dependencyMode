@@ -2,7 +2,7 @@ resources:
   - name: dependencyModeImage
     type: Image
     configuration:
-      registry: aidan_docker
+      registry: acme-docker-staging-local
       imageName: RjSH1/test
       imageTag: "0"
   - name: dependencyModePropertyBag
