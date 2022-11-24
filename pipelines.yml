@@ -12,7 +12,7 @@ resources:
   - name: dependencyModeRepo
     type: GitRepo
     configuration:
-      gitProvider: myGithub
+      gitProvider: ACMEGit
       path: RjSH1/dependencyMode
       branches:
         include: ^{{gitBranch}}$
@@ -29,7 +29,7 @@ pipelines:
             - name: dependencyModeImage
           integrations:
             #- name: aidan_docker
-            - name: myArtifactory
+            - name: ACMEArt
         execution:
           onExecute:
             - cd ${res_dependencyModeRepo_resourcePath}
